@@ -21,6 +21,7 @@ function App() {
       edit: false,
       time: 'day',
       category: 'general',
+      selected: true,
     },
     {
       text: 'beispiel2',
@@ -30,6 +31,7 @@ function App() {
       edit: false,
       time: 'day',
       category: 'general',
+      selected: false,
     },
     {
       text: 'beispiel3',
@@ -39,6 +41,7 @@ function App() {
       edit: false,
       time: 'month',
       category: 'general',
+      selected: false,
     },
     {
       text: 'beispiel4',
@@ -48,6 +51,7 @@ function App() {
       edit: false,
       time: 'week',
       category: 'general',
+      selected: false,
     },
   ]);
 
