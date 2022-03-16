@@ -16,6 +16,7 @@ function App() {
   const [tasks, setTasks] = useState([]);
   const [progressStatus, setProgressStatus] = useState();
   console.log(tasks);
+
   console.log(progressStatus);
 
   //functions
@@ -45,12 +46,20 @@ function App() {
     const taskList = [...tasks];
     const newTaskList = taskList.filter((task) => task.selected === false);
     setTasks(newTaskList);
+    removeSelectStatus();
   }
 
   function changeProgressStatus(value) {
     let taskList = [...tasks];
     taskList = taskList.filter((task) => task.selected === true);
     taskList = [...tasks, taskList.map((task) => (task.progress = value))];
+    setTasks(taskList);
+    removeSelectStatus();
+  }
+
+  function removeSelectStatus() {
+    let taskList = [...tasks];
+    taskList.map((task) => (task.selected = false));
     setTasks(taskList);
   }
 
