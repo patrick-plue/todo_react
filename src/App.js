@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 
 import Header from './components/Header';
-import Item from './components/Item';
 import Sidebar from './components/Sidebar';
 import List from './components/List';
 
@@ -23,10 +22,37 @@ function App() {
       time: 'day',
       category: 'general',
     },
+    {
+      text: 'beispiel2',
+      subtext: 'subtextbeispiel2',
+      id: uuidv4(),
+      complete: false,
+      edit: false,
+      time: 'day',
+      category: 'general',
+    },
+    {
+      text: 'beispiel3',
+      subtext: 'subtextbeispiel3',
+      id: uuidv4(),
+      complete: false,
+      edit: false,
+      time: 'month',
+      category: 'general',
+    },
+    {
+      text: 'beispiel4',
+      subtext: 'subtextbeispiel4',
+      id: uuidv4(),
+      complete: false,
+      edit: false,
+      time: 'week',
+      category: 'general',
+    },
   ]);
 
   //functions
-  function addTask(text, time, category) {
+  function addTask(text, time, category, importance) {
     const newTask = {
       text: text,
       id: uuidv4(),
@@ -34,6 +60,7 @@ function App() {
       edit: false,
       time: time,
       category: category,
+      important: importance,
     };
     setTask([...tasks, newTask]);
   }
