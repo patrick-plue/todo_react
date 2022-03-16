@@ -12,7 +12,11 @@ import './assets/sidebar.css';
 import './assets/item.css';
 
 function App() {
+  // useStates
   const [tasks, setTasks] = useState([]);
+  const [progressStatus, setProgressStatus] = useState();
+  console.log(tasks);
+  console.log(progressStatus);
 
   //functions
   function addTask(event, text, progress, category) {
@@ -43,27 +47,39 @@ function App() {
     setTasks(newTaskList);
   }
 
-  console.log(tasks);
+  function changeProgressStatus(value) {
+    let taskList = [...tasks];
+    taskList = taskList.filter((task) => task.selected === true);
+    taskList = [...tasks, taskList.map((task) => (task.progress = value))];
+    setTasks(taskList);
+  }
 
   return (
     <div className="appContainer">
       <Header deleteTask={deleteTask} />
-      <Sidebar addTask={addTask} />
+      <Sidebar
+        addTask={addTask}
+        setProgressStatus={setProgressStatus}
+        progressStatus={progressStatus}
+      />
       <div className="mainContainer">
         <List
           title={'todo'}
           tasks={tasks.filter((task) => task.progress === 'todo')}
           select={select}
+          changeProgressStatus={changeProgressStatus}
         />
         <List
-          title={'in progress'}
-          tasks={tasks.filter((task) => task.progress === 'inprogress')}
+          title={'progress'}
+          tasks={tasks.filter((task) => task.progress === 'progress')}
           select={select}
+          changeProgressStatus={changeProgressStatus}
         />
         <List
           title={'done'}
           tasks={tasks.filter((task) => task.progress === 'done')}
           select={select}
+          changeProgressStatus={changeProgressStatus}
         />
       </div>
     </div>

@@ -1,10 +1,8 @@
 import React, { useState } from 'react';
 
-function Sidebar({ addTask }) {
+function Sidebar({ addTask, setProgressStatus, progressStatus }) {
   const [newTask, setNewTask] = useState();
-  const [progessStatus, setProgressStatus] = useState();
   const [category, setCategory] = useState();
-  console.log(progessStatus);
 
   return (
     <div className="sidebarContainer">
@@ -26,7 +24,7 @@ function Sidebar({ addTask }) {
           type="radio"
           id="inprogress"
           name="progress"
-          value="inprogress"
+          value="progress"
         />
         <label for="inprogess">in progreess</label>
         <input
@@ -37,7 +35,7 @@ function Sidebar({ addTask }) {
           value="done"
         />
         <label for="done">done</label>
-        <button onClick={(e) => addTask(e, newTask, progessStatus, category)}>
+        <button onClick={(e) => addTask(e, newTask, progressStatus, category)}>
           Add
         </button>
       </form>
