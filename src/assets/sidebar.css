@@ -3,7 +3,7 @@
   width: 100;
   border: 1px dashed gray;
   grid-column-start: 1;
-  grid-column-end: 4;
+  grid-column-end: 5;
   grid-row-start: 1;
   grid-row-end: 14;
 }

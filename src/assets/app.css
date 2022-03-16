@@ -1,12 +1,19 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 .appContainer {
   background-color: aliceblue;
   display: grid;
   grid-template-columns: repeat(14, 1fr);
   grid-template-rows: repeat(6, 1fr);
+  margin: 1% 1%;
 }
 
 .mainContainer {
-  grid-column-start: 4;
+  grid-column-start: 5;
   grid-column-end: 15;
   grid-row-start: 2;
   grid-row-end: 7;
