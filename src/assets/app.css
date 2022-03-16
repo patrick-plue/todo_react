@@ -1,0 +1,7 @@
+.appContainer {
+  background-color: aliceblue;
+}
+
+.mainContainer {
+  display: flex;
+}
