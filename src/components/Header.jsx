@@ -1,11 +1,11 @@
 import React from 'react';
 
-function Header() {
+function Header({ deleteTask }) {
   // add react select tag
   return (
     <div className="headerContainer">
       <button>Done</button>
-      <button>Delete</button>
+      <button onClick={() => deleteTask()}>Delete</button>
       <button>Archive</button>
       <select>
         <option>none</option>
