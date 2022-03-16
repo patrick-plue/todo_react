@@ -19,7 +19,7 @@ function App() {
       id: uuidv4(),
       complete: false,
       edit: false,
-      time: 'day',
+      progress: 'todo',
       category: 'general',
       selected: true,
       important: false,
@@ -30,7 +30,7 @@ function App() {
       id: uuidv4(),
       complete: false,
       edit: false,
-      time: 'day',
+      progress: 'todo',
       category: 'general',
       selected: false,
       important: false,
@@ -41,7 +41,7 @@ function App() {
       id: uuidv4(),
       complete: false,
       edit: false,
-      time: 'month',
+      progress: 'todo',
       category: 'general',
       selected: false,
       important: false,
@@ -52,7 +52,7 @@ function App() {
       id: uuidv4(),
       complete: false,
       edit: false,
-      time: 'week',
+      progress: 'todo',
       category: 'general',
       selected: false,
       important: false,
@@ -60,13 +60,13 @@ function App() {
   ]);
 
   //functions
-  function addTask(text, time, category, importance) {
+  function addTask(text, progress, category, importance) {
     const newTask = {
       text: text,
       id: uuidv4(),
       complete: false,
       edit: false,
-      time: 'day',
+      progress: 'todo',
       category: category,
       selected: false,
       important: importance,
@@ -95,18 +95,18 @@ function App() {
       <Sidebar addTask={addTask} />
       <div className="mainContainer">
         <List
-          title={'day'}
-          tasks={tasks.filter((task) => task.time === 'day')}
+          title={'todo'}
+          tasks={tasks.filter((task) => task.progress === 'todo')}
           select={select}
         />
         <List
-          title={'week'}
-          tasks={tasks.filter((task) => task.time === 'week')}
+          title={'in progress'}
+          tasks={tasks.filter((task) => task.progress === 'inprogress')}
           select={select}
         />
         <List
-          title={'month'}
-          tasks={tasks.filter((task) => task.time === 'month')}
+          title={'done'}
+          tasks={tasks.filter((task) => task.progress === 'done')}
           select={select}
         />
       </div>
