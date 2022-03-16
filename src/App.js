@@ -22,6 +22,7 @@ function App() {
       time: 'day',
       category: 'general',
       selected: true,
+      important: false,
     },
     {
       text: 'beispiel2',
@@ -32,6 +33,7 @@ function App() {
       time: 'day',
       category: 'general',
       selected: false,
+      important: false,
     },
     {
       text: 'beispiel3',
@@ -42,6 +44,7 @@ function App() {
       time: 'month',
       category: 'general',
       selected: false,
+      important: false,
     },
     {
       text: 'beispiel4',
@@ -52,6 +55,7 @@ function App() {
       time: 'week',
       category: 'general',
       selected: false,
+      important: false,
     },
   ]);
 
@@ -64,6 +68,7 @@ function App() {
       edit: false,
       time: time,
       category: category,
+      selected: false,
       important: importance,
     };
     setTask([...tasks, newTask]);
