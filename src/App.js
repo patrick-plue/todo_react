@@ -12,64 +12,20 @@ import './assets/sidebar.css';
 import './assets/item.css';
 
 function App() {
-  const [tasks, setTasks] = useState([
-    {
-      text: 'beispiel',
-      subtext: 'subtextbeispiel',
-      id: uuidv4(),
-      complete: false,
-      edit: false,
-      time: 'day',
-      category: 'general',
-      selected: true,
-      important: false,
-    },
-    {
-      text: 'beispiel2',
-      subtext: 'subtextbeispiel2',
-      id: uuidv4(),
-      complete: false,
-      edit: false,
-      time: 'day',
-      category: 'general',
-      selected: false,
-      important: false,
-    },
-    {
-      text: 'beispiel3',
-      subtext: 'subtextbeispiel3',
-      id: uuidv4(),
-      complete: false,
-      edit: false,
-      time: 'month',
-      category: 'general',
-      selected: false,
-      important: false,
-    },
-    {
-      text: 'beispiel4',
-      subtext: 'subtextbeispiel4',
-      id: uuidv4(),
-      complete: false,
-      edit: false,
-      time: 'week',
-      category: 'general',
-      selected: false,
-      important: false,
-    },
-  ]);
+  const [tasks, setTasks] = useState([]);
 
   //functions
-  function addTask(text, time, category, importance) {
+  function addTask(event, text, progress, category) {
+    event.preventDefault();
     const newTask = {
       text: text,
       id: uuidv4(),
-      complete: false,
+      archived: false,
       edit: false,
-      time: 'day',
+      progress: progress,
       category: category,
       selected: false,
-      important: importance,
+      important: false,
     };
     setTasks([...tasks, newTask]);
   }
@@ -95,18 +51,18 @@ function App() {
       <Sidebar addTask={addTask} />
       <div className="mainContainer">
         <List
-          title={'day'}
-          tasks={tasks.filter((task) => task.time === 'day')}
+          title={'todo'}
+          tasks={tasks.filter((task) => task.progress === 'todo')}
           select={select}
         />
         <List
-          title={'week'}
-          tasks={tasks.filter((task) => task.time === 'week')}
+          title={'in progress'}
+          tasks={tasks.filter((task) => task.progress === 'inprogress')}
           select={select}
         />
         <List
-          title={'month'}
-          tasks={tasks.filter((task) => task.time === 'month')}
+          title={'done'}
+          tasks={tasks.filter((task) => task.progress === 'done')}
           select={select}
         />
       </div>
