@@ -16,3 +16,7 @@
 .subTask {
   padding: 2%;
 }
+
+.selected {
+  border: 1px solid red;
+}
