@@ -12,64 +12,20 @@ import './assets/sidebar.css';
 import './assets/item.css';
 
 function App() {
-  const [tasks, setTasks] = useState([
-    {
-      text: 'beispiel',
-      subtext: 'subtextbeispiel',
-      id: uuidv4(),
-      complete: false,
-      edit: false,
-      progress: 'todo',
-      category: 'general',
-      selected: true,
-      important: false,
-    },
-    {
-      text: 'beispiel2',
-      subtext: 'subtextbeispiel2',
-      id: uuidv4(),
-      complete: false,
-      edit: false,
-      progress: 'todo',
-      category: 'general',
-      selected: false,
-      important: false,
-    },
-    {
-      text: 'beispiel3',
-      subtext: 'subtextbeispiel3',
-      id: uuidv4(),
-      complete: false,
-      edit: false,
-      progress: 'todo',
-      category: 'general',
-      selected: false,
-      important: false,
-    },
-    {
-      text: 'beispiel4',
-      subtext: 'subtextbeispiel4',
-      id: uuidv4(),
-      complete: false,
-      edit: false,
-      progress: 'todo',
-      category: 'general',
-      selected: false,
-      important: false,
-    },
-  ]);
+  const [tasks, setTasks] = useState([]);
 
   //functions
-  function addTask(text, progress, category, importance) {
+  function addTask(event, text, progress, category) {
+    event.preventDefault();
     const newTask = {
       text: text,
       id: uuidv4(),
-      complete: false,
+      archived: false,
       edit: false,
-      progress: 'todo',
+      progress: progress,
       category: category,
       selected: false,
-      important: importance,
+      important: false,
     };
     setTasks([...tasks, newTask]);
   }
