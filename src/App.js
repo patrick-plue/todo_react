@@ -46,7 +46,6 @@ function App() {
     const taskList = [...tasks];
     const newTaskList = taskList.filter((task) => task.selected === false);
     setTasks(newTaskList);
-    removeSelectStatus();
   }
 
   function changeProgressStatus(value) {
