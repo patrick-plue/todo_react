@@ -66,7 +66,7 @@ function App() {
       id: uuidv4(),
       complete: false,
       edit: false,
-      time: time,
+      time: 'day',
       category: category,
       selected: false,
       important: importance,
@@ -92,7 +92,7 @@ function App() {
   return (
     <div className="appContainer">
       <Header deleteTask={deleteTask} />
-      <Sidebar />
+      <Sidebar addTask={addTask} />
       <div className="mainContainer">
         <List
           title={'day'}
