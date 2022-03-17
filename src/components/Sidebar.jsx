@@ -5,10 +5,12 @@ import Select from 'react-select';
 function Sidebar({ addTask, setProgressStatus, progressStatus }) {
   const [newTask, setNewTask] = useState();
   const [category, setCategory] = useState();
+  console.log(category);
 
   const options = [
     { value: 'private', label: 'private' },
     { value: 'hobby', label: 'hobby' },
+    { value: 'work', label: 'work' },
   ];
 
   return (
@@ -42,7 +44,10 @@ function Sidebar({ addTask, setProgressStatus, progressStatus }) {
           value="done"
         />
         <label for="done">done</label>
-        <Select options={options} />
+        <Select
+          options={options}
+          onChange={(event) => setCategory(event.value)}
+        />
         <button onClick={(e) => addTask(e, newTask, progressStatus, category)}>
           Add
         </button>
