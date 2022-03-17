@@ -17,22 +17,24 @@ function App() {
   const [progressStatus, setProgressStatus] = useState();
   console.log(tasks);
 
-  console.log(progressStatus);
-
   //functions
   function addTask(event, text, progress, category) {
     event.preventDefault();
-    const newTask = {
-      text: text,
-      id: uuidv4(),
-      archived: false,
-      edit: false,
-      progress: progress,
-      category: category,
-      selected: false,
-      important: false,
-    };
-    setTasks([...tasks, newTask]);
+    if (text) {
+      const newTask = {
+        text: text,
+        id: uuidv4(),
+        archived: false,
+        edit: false,
+        progress: progress,
+        category: category,
+        selected: false,
+        important: false,
+      };
+      setTasks([...tasks, newTask]);
+    } else {
+      return;
+    }
   }
 
   function select(id) {
