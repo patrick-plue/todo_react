@@ -35,6 +35,9 @@ function Sidebar({ addTask, setProgressStatus, progressStatus }) {
           value="done"
         />
         <label for="done">done</label>
+        <select>
+          <option>private</option>
+        </select>
         <button onClick={(e) => addTask(e, newTask, progressStatus, category)}>
           Add
         </button>
