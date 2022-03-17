@@ -15,7 +15,20 @@ function App() {
   // useStates
   const [tasks, setTasks] = useState([]);
   const [progressStatus, setProgressStatus] = useState();
+  const [category, setCategory] = useState();
+  const [filteredTasks, setFilteredTasks] = useState([]);
+  const [filterOption, setFilterOption] = useState('general');
+
   console.log(tasks);
+
+  // useEffect
+
+  useEffect(
+    (filterOption) => {
+      filterTasks(filterOption);
+    },
+    [filterOption]
+  );
 
   //functions
   function addTask(event, text, progress, category) {
@@ -64,6 +77,12 @@ function App() {
     setTasks(taskList);
   }
 
+  function filterTasks(category) {
+    let taskList = [...tasks];
+    taskList = taskList.filter((task) => (task.category = category));
+    setFilteredTasks(taskList);
+  }
+
   return (
     <div className="appContainer">
       <Header deleteTask={deleteTask} />
@@ -71,23 +90,25 @@ function App() {
         addTask={addTask}
         setProgressStatus={setProgressStatus}
         progressStatus={progressStatus}
+        setCategory={setCategory}
+        category={category}
       />
       <div className="mainContainer">
         <List
           title={'todo'}
-          tasks={tasks.filter((task) => task.progress === 'todo')}
+          tasks={filteredTasks.filter((task) => task.progress === 'todo')}
           select={select}
           changeProgressStatus={changeProgressStatus}
         />
         <List
           title={'progress'}
-          tasks={tasks.filter((task) => task.progress === 'progress')}
+          tasks={filteredTasks.filter((task) => task.progress === 'progress')}
           select={select}
           changeProgressStatus={changeProgressStatus}
         />
         <List
           title={'done'}
-          tasks={tasks.filter((task) => task.progress === 'done')}
+          tasks={filteredTasks.filter((task) => task.progress === 'done')}
           select={select}
           changeProgressStatus={changeProgressStatus}
         />

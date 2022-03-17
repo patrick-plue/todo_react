@@ -2,10 +2,14 @@ import React, { useState } from 'react';
 
 import Select from 'react-select';
 
-function Sidebar({ addTask, setProgressStatus, progressStatus }) {
+function Sidebar({
+  addTask,
+  setProgressStatus,
+  progressStatus,
+  setCategory,
+  category,
+}) {
   const [newTask, setNewTask] = useState();
-  const [category, setCategory] = useState();
-  console.log(category);
 
   const options = [
     { value: 'private', label: 'private' },
