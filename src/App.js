@@ -15,9 +15,6 @@ function App() {
   // useStates
   const [tasks, setTasks] = useState([]);
   const [progressStatus, setProgressStatus] = useState();
-  console.log(tasks);
-
-  console.log(progressStatus);
 
   //functions
   function addTask(event, text, progress, category) {
