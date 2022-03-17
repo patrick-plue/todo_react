@@ -6,10 +6,10 @@ function Sidebar({
   addTask,
   setProgressStatus,
   progressStatus,
-  setCategory,
-  category,
+  changeFilterOption,
 }) {
   const [newTask, setNewTask] = useState();
+  const [currentCategory, setCurrentCategory] = useState('');
 
   const options = [
     { value: 'private', label: 'private' },
@@ -50,12 +50,34 @@ function Sidebar({
         <label for="done">done</label>
         <Select
           options={options}
-          onChange={(event) => setCategory(event.value)}
+          onChange={(event) => setCurrentCategory(event.value)}
         />
-        <button onClick={(e) => addTask(e, newTask, progressStatus, category)}>
+        <button
+          onClick={(e) => addTask(e, newTask, progressStatus, currentCategory)}
+        >
           Add
         </button>
       </form>
+      <div className="filterContainer">
+        <button
+          value="private"
+          onClick={(e) => changeFilterOption(e.target.value)}
+        >
+          private
+        </button>
+        <button
+          value="work"
+          onClick={(e) => changeFilterOption(e.target.value)}
+        >
+          work
+        </button>
+        <button
+          value="hobby"
+          onClick={(e) => changeFilterOption(e.target.value)}
+        >
+          hobby
+        </button>
+      </div>
     </div>
   );
 }

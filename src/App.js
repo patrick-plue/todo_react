@@ -15,23 +15,18 @@ function App() {
   // useStates
   const [tasks, setTasks] = useState([]);
   const [progressStatus, setProgressStatus] = useState();
-  const [category, setCategory] = useState();
   const [filteredTasks, setFilteredTasks] = useState([]);
-  const [filterOption, setFilterOption] = useState('general');
-
-  console.log(tasks);
+  const [filterOption, setFilterOption] = useState('');
+  console.log('tasks', tasks);
 
   // useEffect
 
-  useEffect(
-    (filterOption) => {
-      filterTasks(filterOption);
-    },
-    [filterOption]
-  );
+  useEffect(() => {
+    filterTasks(filterOption);
+  }, [tasks, filterOption]);
 
   //functions
-  function addTask(event, text, progress, category) {
+  function addTask(event, text, progress, currentCategory) {
     event.preventDefault();
     if (text) {
       const newTask = {
@@ -40,11 +35,11 @@ function App() {
         archived: false,
         edit: false,
         progress: progress,
-        category: category,
+        category: currentCategory,
         selected: false,
         important: false,
       };
-      setTasks([...tasks, newTask]);
+      setTasks([newTask, ...tasks]);
     } else {
       return;
     }
@@ -79,8 +74,12 @@ function App() {
 
   function filterTasks(category) {
     let taskList = [...tasks];
-    taskList = taskList.filter((task) => (task.category = category));
+    taskList = taskList.filter((task) => task.category === category);
     setFilteredTasks(taskList);
+  }
+
+  function changeFilterOption(value) {
+    setFilterOption(value);
   }
 
   return (
@@ -90,8 +89,7 @@ function App() {
         addTask={addTask}
         setProgressStatus={setProgressStatus}
         progressStatus={progressStatus}
-        setCategory={setCategory}
-        category={category}
+        changeFilterOption={changeFilterOption}
       />
       <div className="mainContainer">
         <List
