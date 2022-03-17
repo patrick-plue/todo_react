@@ -16,7 +16,7 @@ function App() {
   const [tasks, setTasks] = useState([]);
   const [progressStatus, setProgressStatus] = useState();
   const [filteredTasks, setFilteredTasks] = useState([]);
-  const [filterOption, setFilterOption] = useState('');
+  const [filterOption, setFilterOption] = useState('general');
   console.log('tasks', tasks);
 
   // useEffect

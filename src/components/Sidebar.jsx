@@ -12,6 +12,7 @@ function Sidebar({
   const [currentCategory, setCurrentCategory] = useState('');
 
   const options = [
+    { value: 'general', label: 'general' },
     { value: 'private', label: 'private' },
     { value: 'hobby', label: 'hobby' },
     { value: 'work', label: 'work' },
@@ -39,7 +40,7 @@ function Sidebar({
           name="progress"
           value="progress"
         />
-        <label for="inprogess">in progreess</label>
+        <label for="inprogess">in progress</label>
         <input
           onChange={(event) => setProgressStatus(event.target.value)}
           type="radio"
@@ -76,6 +77,12 @@ function Sidebar({
           onClick={(e) => changeFilterOption(e.target.value)}
         >
           hobby
+        </button>
+        <button
+          value="general"
+          onClick={(e) => changeFilterOption(e.target.value)}
+        >
+          general
         </button>
       </div>
     </div>
