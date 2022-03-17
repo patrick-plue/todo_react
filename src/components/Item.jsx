@@ -6,8 +6,11 @@ function Item({ tasks, select }) {
       className={tasks.selected ? 'selected itemCard' : 'itemCard'}
       onClick={() => select(tasks.id)}
     >
-      <p className="mainTask">{tasks.text}</p>
-      <p className="subTask">{tasks.subtext}</p>
+      {tasks.edit === true ? (
+        <input />
+      ) : (
+        <p onclassName="mainTask">{tasks.text}</p>
+      )}
     </div>
   );
 }

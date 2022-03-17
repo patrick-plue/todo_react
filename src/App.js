@@ -48,9 +48,18 @@ function App() {
   function select(id) {
     const taskList = [...tasks];
     const index = tasks.findIndex((task) => task.id === id);
-    tasks[index].selected = !tasks[index].selected;
-    setTasks(taskList);
+    if (tasks[index].edit != true) {
+      tasks[index].selected = !tasks[index].selected;
+      setTasks(taskList);
+    }
   }
+
+  const editTask = () => {
+    let taskList = [...tasks];
+    const index = taskList.findIndex((task) => task.selected === true);
+    taskList[index].edit = true;
+    setTasks(taskList);
+  };
 
   function deleteTask() {
     const taskList = [...tasks];
@@ -84,7 +93,7 @@ function App() {
 
   return (
     <div className="appContainer">
-      <Header deleteTask={deleteTask} />
+      <Header deleteTask={deleteTask} editTask={editTask} />
       <Sidebar
         addTask={addTask}
         setProgressStatus={setProgressStatus}
