@@ -1,8 +1,15 @@
 import React, { useState } from 'react';
 
+import Select from 'react-select';
+
 function Sidebar({ addTask, setProgressStatus, progressStatus }) {
   const [newTask, setNewTask] = useState();
   const [category, setCategory] = useState();
+
+  const options = [
+    { value: 'private', label: 'private' },
+    { value: 'hobby', label: 'hobby' },
+  ];
 
   return (
     <div className="sidebarContainer">
@@ -35,9 +42,7 @@ function Sidebar({ addTask, setProgressStatus, progressStatus }) {
           value="done"
         />
         <label for="done">done</label>
-        <select>
-          <option>private</option>
-        </select>
+        <Select options={options} />
         <button onClick={(e) => addTask(e, newTask, progressStatus, category)}>
           Add
         </button>
