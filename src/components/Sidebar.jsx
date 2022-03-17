@@ -2,12 +2,17 @@ import React, { useState } from 'react';
 
 import Select from 'react-select';
 
-function Sidebar({ addTask, setProgressStatus, progressStatus }) {
+function Sidebar({
+  addTask,
+  setProgressStatus,
+  progressStatus,
+  changeFilterOption,
+}) {
   const [newTask, setNewTask] = useState();
-  const [category, setCategory] = useState();
-  console.log(category);
+  const [currentCategory, setCurrentCategory] = useState('');
 
   const options = [
+    { value: 'general', label: 'general' },
     { value: 'private', label: 'private' },
     { value: 'hobby', label: 'hobby' },
     { value: 'work', label: 'work' },
@@ -35,7 +40,7 @@ function Sidebar({ addTask, setProgressStatus, progressStatus }) {
           name="progress"
           value="progress"
         />
-        <label for="inprogess">in progreess</label>
+        <label for="inprogess">in progress</label>
         <input
           onChange={(event) => setProgressStatus(event.target.value)}
           type="radio"
@@ -46,12 +51,40 @@ function Sidebar({ addTask, setProgressStatus, progressStatus }) {
         <label for="done">done</label>
         <Select
           options={options}
-          onChange={(event) => setCategory(event.value)}
+          onChange={(event) => setCurrentCategory(event.value)}
         />
-        <button onClick={(e) => addTask(e, newTask, progressStatus, category)}>
+        <button
+          onClick={(e) => addTask(e, newTask, progressStatus, currentCategory)}
+        >
           Add
         </button>
       </form>
+      <div className="filterContainer">
+        <button
+          value="private"
+          onClick={(e) => changeFilterOption(e.target.value)}
+        >
+          private
+        </button>
+        <button
+          value="work"
+          onClick={(e) => changeFilterOption(e.target.value)}
+        >
+          work
+        </button>
+        <button
+          value="hobby"
+          onClick={(e) => changeFilterOption(e.target.value)}
+        >
+          hobby
+        </button>
+        <button
+          value="general"
+          onClick={(e) => changeFilterOption(e.target.value)}
+        >
+          general
+        </button>
+      </div>
     </div>
   );
 }

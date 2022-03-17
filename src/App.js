@@ -15,10 +15,18 @@ function App() {
   // useStates
   const [tasks, setTasks] = useState([]);
   const [progressStatus, setProgressStatus] = useState();
-  console.log(tasks);
+  const [filteredTasks, setFilteredTasks] = useState([]);
+  const [filterOption, setFilterOption] = useState('general');
+  console.log('tasks', tasks);
+
+  // useEffect
+
+  useEffect(() => {
+    filterTasks(filterOption);
+  }, [tasks, filterOption]);
 
   //functions
-  function addTask(event, text, progress, category) {
+  function addTask(event, text, progress, currentCategory) {
     event.preventDefault();
     if (text) {
       const newTask = {
@@ -27,11 +35,11 @@ function App() {
         archived: false,
         edit: false,
         progress: progress,
-        category: category,
+        category: currentCategory,
         selected: false,
         important: false,
       };
-      setTasks([...tasks, newTask]);
+      setTasks([newTask, ...tasks]);
     } else {
       return;
     }
@@ -40,9 +48,18 @@ function App() {
   function select(id) {
     const taskList = [...tasks];
     const index = tasks.findIndex((task) => task.id === id);
-    tasks[index].selected = !tasks[index].selected;
-    setTasks(taskList);
+    if (tasks[index].edit != true) {
+      tasks[index].selected = !tasks[index].selected;
+      setTasks(taskList);
+    }
   }
+
+  const editTask = () => {
+    let taskList = [...tasks];
+    const index = taskList.findIndex((task) => task.selected === true);
+    taskList[index].edit = true;
+    setTasks(taskList);
+  };
 
   function deleteTask() {
     const taskList = [...tasks];
@@ -64,30 +81,41 @@ function App() {
     setTasks(taskList);
   }
 
+  function filterTasks(category) {
+    let taskList = [...tasks];
+    taskList = taskList.filter((task) => task.category === category);
+    setFilteredTasks(taskList);
+  }
+
+  function changeFilterOption(value) {
+    setFilterOption(value);
+  }
+
   return (
     <div className="appContainer">
-      <Header deleteTask={deleteTask} />
+      <Header deleteTask={deleteTask} editTask={editTask} />
       <Sidebar
         addTask={addTask}
         setProgressStatus={setProgressStatus}
         progressStatus={progressStatus}
+        changeFilterOption={changeFilterOption}
       />
       <div className="mainContainer">
         <List
           title={'todo'}
-          tasks={tasks.filter((task) => task.progress === 'todo')}
+          tasks={filteredTasks.filter((task) => task.progress === 'todo')}
           select={select}
           changeProgressStatus={changeProgressStatus}
         />
         <List
           title={'progress'}
-          tasks={tasks.filter((task) => task.progress === 'progress')}
+          tasks={filteredTasks.filter((task) => task.progress === 'progress')}
           select={select}
           changeProgressStatus={changeProgressStatus}
         />
         <List
           title={'done'}
-          tasks={tasks.filter((task) => task.progress === 'done')}
+          tasks={filteredTasks.filter((task) => task.progress === 'done')}
           select={select}
           changeProgressStatus={changeProgressStatus}
         />
