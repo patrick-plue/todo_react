@@ -6,7 +6,7 @@ function Sidebar({ addTask, setProgressStatus, progressStatus }) {
 
   return (
     <div className="sidebarContainer">
-      <form>
+      <form className="formContainer">
         <input
           onChange={(event) => setNewTask(event.target.value)}
           type="text"

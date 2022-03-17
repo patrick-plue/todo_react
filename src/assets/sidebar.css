@@ -6,3 +6,10 @@
   grid-row-start: 1;
   grid-row-end: 14;
 }
+
+.formContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px dashed gray;
+}
