@@ -7,6 +7,8 @@ function Sidebar({
   setProgressStatus,
   progressStatus,
   changeFilterOption,
+  filterOptions,
+  filterOption,
 }) {
   const [newTask, setNewTask] = useState();
   const [currentCategory, setCurrentCategory] = useState('');
@@ -60,30 +62,15 @@ function Sidebar({
         </button>
       </form>
       <div className="filterContainer">
-        <button
-          value="private"
-          onClick={(e) => changeFilterOption(e.target.value)}
-        >
-          private
-        </button>
-        <button
-          value="work"
-          onClick={(e) => changeFilterOption(e.target.value)}
-        >
-          work
-        </button>
-        <button
-          value="hobby"
-          onClick={(e) => changeFilterOption(e.target.value)}
-        >
-          hobby
-        </button>
-        <button
-          value="general"
-          onClick={(e) => changeFilterOption(e.target.value)}
-        >
-          general
-        </button>
+        {filterOptions.map((option) => (
+          <button
+            onClick={(e) => changeFilterOption(e.target.value)}
+            value={option}
+            className={option === filterOption ? 'active' : ''}
+          >
+            {option}
+          </button>
+        ))}
       </div>
     </div>
   );

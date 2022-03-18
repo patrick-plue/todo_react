@@ -17,7 +17,14 @@ function App() {
   const [progressStatus, setProgressStatus] = useState();
   const [filteredTasks, setFilteredTasks] = useState([]);
   const [filterOption, setFilterOption] = useState('general');
+  const [filterOptions, setFilterOptions] = useState([
+    'private',
+    'general',
+    'hobbies',
+    'work',
+  ]);
   console.log('tasks', tasks);
+  console.log(filterOption);
 
   // useEffect
 
@@ -105,6 +112,8 @@ function App() {
         setProgressStatus={setProgressStatus}
         progressStatus={progressStatus}
         changeFilterOption={changeFilterOption}
+        filterOptions={filterOptions}
+        filterOption={filterOption}
       />
       <div className="mainContainer">
         <List
