@@ -20,7 +20,7 @@ function App() {
   const [filterOptions, setFilterOptions] = useState([
     'private',
     'general',
-    'hobbies',
+    'hobby',
     'work',
   ]);
   console.log('tasks', tasks);
@@ -106,14 +106,17 @@ function App() {
 
   return (
     <div className="appContainer">
-      <Header deleteTask={deleteTask} editTask={editTask} />
+      <Header
+        deleteTask={deleteTask}
+        editTask={editTask}
+        changeFilterOption={changeFilterOption}
+        filterOptions={filterOptions}
+        filterOption={filterOption}
+      />
       <Sidebar
         addTask={addTask}
         setProgressStatus={setProgressStatus}
         progressStatus={progressStatus}
-        changeFilterOption={changeFilterOption}
-        filterOptions={filterOptions}
-        filterOption={filterOption}
       />
       <div className="mainContainer">
         <List

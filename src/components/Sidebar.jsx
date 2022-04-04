@@ -1,24 +1,7 @@
 import React, { useState } from 'react';
 
-import Select from 'react-select';
-
-function Sidebar({
-  addTask,
-  setProgressStatus,
-  progressStatus,
-  changeFilterOption,
-  filterOptions,
-  filterOption,
-}) {
+function Sidebar({ addTask, setProgressStatus, progressStatus }) {
   const [newTask, setNewTask] = useState();
-  const [currentCategory, setCurrentCategory] = useState('');
-
-  const options = [
-    { value: 'general', label: 'general' },
-    { value: 'private', label: 'private' },
-    { value: 'hobby', label: 'hobby' },
-    { value: 'work', label: 'work' },
-  ];
 
   return (
     <div className="sidebarContainer">
@@ -51,27 +34,10 @@ function Sidebar({
           value="done"
         />
         <label for="done">done</label>
-        <Select
-          options={options}
-          onChange={(event) => setCurrentCategory(event.value)}
-        />
-        <button
-          onClick={(e) => addTask(e, newTask, progressStatus, currentCategory)}
-        >
+        <button onClick={(e) => addTask(e, newTask, progressStatus)}>
           Add
         </button>
       </form>
-      <div className="filterContainer">
-        {filterOptions.map((option) => (
-          <button
-            onClick={(e) => changeFilterOption(e.target.value)}
-            value={option}
-            className={option === filterOption ? 'active' : ''}
-          >
-            {option}
-          </button>
-        ))}
-      </div>
     </div>
   );
 }

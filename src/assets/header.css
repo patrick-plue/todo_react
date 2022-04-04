@@ -6,4 +6,5 @@
   grid-column-end: 15;
   grid-row-start: 1;
   grid-row-end: 2;
+  padding: 10px;
 }
