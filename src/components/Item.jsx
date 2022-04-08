@@ -10,7 +10,7 @@ function Item({ tasks, select, changeTask }) {
       {tasks.edit === true ? (
         <input onChange={() => setCurrentText(tasks.id)} />
       ) : (
-        <p onclassName="mainTask">{tasks.text}</p>
+        <p className="mainTask">{tasks.text}</p>
       )}
     </div>
   );

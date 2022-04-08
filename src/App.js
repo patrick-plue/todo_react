@@ -24,16 +24,22 @@ function App() {
     'work',
   ]);
 
-  console.log(tasks);
-
   // localStorage
 
   useEffect(() => {
-    if (localStorage.getItem('tasks') === true) {
+    if (localStorage.tasks == true) {
       const savedTask = JSON.parse(localStorage.getItem('tasks'));
+      console.log(savedTask, 'savedTasks');
       setTasks(savedTask);
     }
   }, []);
+
+  useEffect(() => {
+    if (tasks.length > 0) {
+      localStorage.setItem('tasks', JSON.stringify(tasks));
+    }
+    console.log(localStorage);
+  }, [tasks, filteredTasks]);
 
   // useEffect
 
@@ -56,7 +62,6 @@ function App() {
         important: false,
       };
       setTasks([newTask, ...tasks]);
-      localStorage.setItem('tasks', JSON.stringify(tasks));
     } else {
       return;
     }
@@ -65,7 +70,7 @@ function App() {
   function select(id) {
     const taskList = [...tasks];
     const index = tasks.findIndex((task) => task.id === id);
-    if (tasks[index].edit != true) {
+    if (tasks[index].edit !== true) {
       tasks[index].selected = !tasks[index].selected;
       setTasks(taskList);
     }
@@ -115,7 +120,7 @@ function App() {
   }
 
   function clearHistory() {
-    localStorage.clear();
+    localStorage.removeItem('tasks');
     window.location.reload();
   }
 

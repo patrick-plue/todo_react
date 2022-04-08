@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { v4 as uuidv4 } from 'uuid';
 
 function Header({
   deleteTask,
@@ -16,6 +17,7 @@ function Header({
               onClick={(e) => changeFilterOption(e.target.value)}
               value={option}
               className={option === filterOption ? 'active' : 'test'}
+              key={uuidv4()}
             >
               {option}
             </button>
