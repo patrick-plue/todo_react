@@ -6,6 +6,7 @@ function Sidebar({
   setProgressStatus,
   progressStatus,
   filterOption,
+  clearHistory,
   // changeCategory,
 }) {
   const [newTask, setNewTask] = useState();
@@ -59,6 +60,7 @@ function Sidebar({
           Add
         </button>
       </form>
+      <button onClick={() => clearHistory()}>Clear History</button>
     </div>
   );
 }

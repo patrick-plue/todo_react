@@ -24,6 +24,17 @@ function App() {
     'work',
   ]);
 
+  console.log(tasks);
+
+  // localStorage
+
+  useEffect(() => {
+    if (localStorage.getItem('tasks') === true) {
+      const savedTask = JSON.parse(localStorage.getItem('tasks'));
+      setTasks(savedTask);
+    }
+  }, []);
+
   // useEffect
 
   useEffect(() => {
@@ -45,6 +56,7 @@ function App() {
         important: false,
       };
       setTasks([newTask, ...tasks]);
+      localStorage.setItem('tasks', JSON.stringify(tasks));
     } else {
       return;
     }
@@ -102,6 +114,11 @@ function App() {
     setFilterOption(value);
   }
 
+  function clearHistory() {
+    localStorage.clear();
+    window.location.reload();
+  }
+
   return (
     <div className="appContainer">
       <Header
@@ -116,6 +133,7 @@ function App() {
         setProgressStatus={setProgressStatus}
         progressStatus={progressStatus}
         filterOption={filterOption}
+        clearHistory={clearHistory}
       />
       <div className="mainContainer">
         <List
