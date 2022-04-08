@@ -1,4 +1,15 @@
 import React, { useState } from 'react';
+import {
+  TextField,
+  FormControl,
+  Radio,
+  RadioGroup,
+  FormControlLabel,
+  FormLabel,
+  Button,
+  Grid,
+  Box,
+} from '@mui/material';
 
 function Sidebar({
   addTask,
@@ -9,58 +20,61 @@ function Sidebar({
   // changeCategory,
 }) {
   const [newTask, setNewTask] = useState();
-  // const options = [
-  //   { value: 'general', label: 'general' },
-  //   { value: 'private', label: 'private' },
-  //   { value: 'hobby', label: 'hobby' },
-  //   { value: 'work', label: 'work' },
-  // ];
 
   return (
-    <div className="sidebarContainer">
-      <form className="formContainer">
-        <input
-          onChange={(event) => setNewTask(event.target.value)}
-          type="text"
-        />
-        {/* <div className="selectContainer">
-          <Select
-            options={options}
-            onChange={(event) => changeCategory(event.value)}
+    <>
+      <Grid item>
+        <Box>
+          <TextField
+            id="outlined-basic"
+            label="Add a task"
+            variant="outlined"
+            onChange={(event) => setNewTask(event.target.value)}
           />
-        </div> */}
-        <input
-          onChange={(event) => setProgressStatus(event.target.value)}
-          type="radio"
-          id="todo"
-          name="progress"
-          value="todo"
-        />
-        <label for="todo">todo</label>
-        <input
-          onChange={(event) => setProgressStatus(event.target.value)}
-          type="radio"
-          id="inprogress"
-          name="progress"
-          value="progress"
-        />
-        <label for="inprogess">in progress</label>
-        <input
-          onChange={(event) => setProgressStatus(event.target.value)}
-          type="radio"
-          id="done"
-          name="progress"
-          value="done"
-        />
-        <label for="done">done</label>
-        <button
-          onClick={(e) => addTask(e, newTask, progressStatus, filterOption)}
-        >
-          Add
-        </button>
-      </form>
-      <button onClick={() => clearHistory()}>Clear History</button>
-    </div>
+        </Box>
+        <Box>
+          <FormControl
+            onChange={(event) => setProgressStatus(event.target.value)}
+          >
+            <FormLabel id="demo-radio-buttons-group-label">Status</FormLabel>
+            <RadioGroup
+              aria-labelledby="demo-radio-buttons-group-label"
+              name="radio-buttons-group"
+            >
+              <FormControlLabel value="todo" control={<Radio />} label="todo" />
+              <FormControlLabel
+                value="progress"
+                control={<Radio />}
+                label="progress"
+              />
+              <FormControlLabel
+                value="done"
+                control={<Radio />}
+                label="addTask"
+              />
+            </RadioGroup>
+          </FormControl>
+        </Box>
+        <Box>
+          <Button
+            variant="outlined"
+            color="secondary"
+            onClick={(e) => addTask(e, newTask, progressStatus, filterOption)}
+          >
+            Add Task
+          </Button>
+        </Box>
+        <Box>
+          <Button
+            variant="outlined"
+            color="error"
+            onClick={() => clearHistory()}
+          >
+            Clear History
+          </Button>
+        </Box>
+      </Grid>
+    </>
   );
 }
 

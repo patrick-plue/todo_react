@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { v4 as uuidv4 } from 'uuid';
+import React from 'react';
+import { Fab, ToggleButton, ToggleButtonGroup, Grid } from '@mui/material';
 
 function Header({
   deleteTask,
@@ -11,25 +11,43 @@ function Header({
 }) {
   return (
     <>
-      <div className="headerContainer">
-        <div className="filterContainer">
+      <Grid item>
+        <ToggleButtonGroup>
           {filterOptions.map((option) => (
-            <button
-              onClick={(e) => changeFilterOption(e.target.value)}
-              value={option}
-              className={option === filterOption ? 'active' : ''}
-              key={uuidv4()}
-            >
-              {option}
-            </button>
+            <>
+              <ToggleButton
+                value={option}
+                onChange={(e) => changeFilterOption(e.target.value)}
+              >
+                {option}
+              </ToggleButton>
+            </>
           ))}
-        </div>
-        <div className="button-container">
-          <button onClick={() => editTask(currentText)}>Edit</button>
-          <button onClick={() => deleteTask()}>Delete</button>
-          <button>Archive</button>
-        </div>
-      </div>
+        </ToggleButtonGroup>
+      </Grid>
+      <Grid item>
+        <Fab
+          color="primary"
+          aria-label="edit"
+          variant="extended"
+          onClick={() => editTask(currentText)}
+        >
+          {' '}
+          Edit
+        </Fab>
+        <Fab
+          color="secondary"
+          variant="extended"
+          aria-label="delete"
+          onClick={() => deleteTask()}
+        >
+          Delete
+        </Fab>
+        <Fab variant="extended" aria-label="archive">
+          Archive
+        </Fab>
+        {/* </div> */}
+      </Grid>
     </>
   );
 }
