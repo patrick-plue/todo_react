@@ -27,10 +27,11 @@ function App() {
   // localStorage
 
   useEffect(() => {
-    if (localStorage.tasks == true) {
+    if (localStorage.tasks !== undefined) {
       const savedTask = JSON.parse(localStorage.getItem('tasks'));
       console.log(savedTask, 'savedTasks');
       setTasks(savedTask);
+      console.log(tasks);
     }
   }, []);
 

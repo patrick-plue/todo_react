@@ -19,4 +19,5 @@
 
 .listTitle:hover {
   background-color: rgb(230, 204, 204);
+  cursor: pointer;
 }

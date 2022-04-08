@@ -7,6 +7,10 @@
   box-shadow: 0px 0px 3px 1px;
 }
 
+.itemCard:hover {
+  cursor: pointer;
+}
+
 .mainTask {
   font-size: 1.5rem;
   padding: 1%;
