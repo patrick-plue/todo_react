@@ -81,6 +81,16 @@ function App() {
     setTasks(taskList);
   };
 
+  const changeTask = (e, value) => {
+    e.preventDefault();
+    let taskList = [...tasks];
+    const index = taskList.findIndex((task) => task.selected === true);
+    taskList[index].text = value;
+    taskList[index].edit = !taskList[index].edit;
+
+    setTasks(taskList);
+  };
+
   function deleteTask() {
     const taskList = [...tasks];
     const newTaskList = taskList.filter((task) => task.selected === false);
@@ -138,6 +148,7 @@ function App() {
           tasks={filteredTasks.filter((task) => task.progress === 'todo')}
           select={select}
           changeProgressStatus={changeProgressStatus}
+          changeTask={changeTask}
         />
         <List
           title={'progress'}
