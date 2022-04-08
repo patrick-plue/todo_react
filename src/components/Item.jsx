@@ -1,14 +1,15 @@
-import React, { useState } from 'react';
+import React from 'react';
 
-function Item({ tasks, select, changeTask }) {
-  const [currentText, setCurrentText] = useState();
+function Item({ tasks, select }) {
   return (
     <div
       className={tasks.selected ? 'selected itemCard' : 'itemCard'}
       onClick={() => select(tasks.id)}
     >
       {tasks.edit === true ? (
-        <input onChange={() => setCurrentText(tasks.id)} />
+        <form>
+          <input></input>
+        </form>
       ) : (
         <p className="mainTask">{tasks.text}</p>
       )}

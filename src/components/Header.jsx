@@ -7,6 +7,7 @@ function Header({
   changeFilterOption,
   filterOptions,
   filterOption,
+  currentText,
 }) {
   return (
     <>
@@ -16,7 +17,7 @@ function Header({
             <button
               onClick={(e) => changeFilterOption(e.target.value)}
               value={option}
-              className={option === filterOption ? 'active' : 'test'}
+              className={option === filterOption ? 'active' : ''}
               key={uuidv4()}
             >
               {option}
@@ -24,7 +25,7 @@ function Header({
           ))}
         </div>
         <div className="button-container">
-          <button onClick={() => editTask()}>Edit</button>
+          <button onClick={() => editTask(currentText)}>Edit</button>
           <button onClick={() => deleteTask()}>Delete</button>
           <button>Archive</button>
         </div>
