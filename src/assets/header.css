@@ -8,3 +8,7 @@
   grid-row-end: 2;
   padding: 10px;
 }
+
+.selectContainer {
+  width: 30%;
+}

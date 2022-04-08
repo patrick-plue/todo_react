@@ -23,8 +23,6 @@ function App() {
     'hobby',
     'work',
   ]);
-  console.log('tasks', tasks);
-  console.log(filterOption);
 
   // useEffect
 
@@ -33,16 +31,16 @@ function App() {
   }, [tasks, filterOption]);
 
   //functions
-  function addTask(event, text, progress, currentCategory) {
+  function addTask(event, text, progress, filterOption) {
     event.preventDefault();
     if (text) {
       const newTask = {
         text: text,
+        category: filterOption,
         id: uuidv4(),
         archived: false,
         edit: false,
         progress: progress,
-        category: currentCategory,
         selected: false,
         important: false,
       };
@@ -117,6 +115,7 @@ function App() {
         addTask={addTask}
         setProgressStatus={setProgressStatus}
         progressStatus={progressStatus}
+        filterOption={filterOption}
       />
       <div className="mainContainer">
         <List

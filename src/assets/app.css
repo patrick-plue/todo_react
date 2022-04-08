@@ -2,7 +2,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-size: 12px;
+  font-size: 18px;
 }
 
 .appContainer {
@@ -40,4 +40,8 @@ input {
 
 .active {
   background-color: green;
+}
+
+.test {
+  background-color: brown;
 }
