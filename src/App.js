@@ -5,11 +5,11 @@ import Header from './components/Header';
 import Sidebar from './components/Sidebar';
 import List from './components/List';
 
-import './assets/app.css';
-import './assets/header.css';
-import './assets/list.css';
-import './assets/sidebar.css';
-import './assets/item.css';
+// import './assets/app.css';
+// import './assets/header.css';
+// import './assets/list.css';
+// import './assets/sidebar.css';
+// import './assets/item.css';
 
 function App() {
   // useStates
@@ -155,12 +155,14 @@ function App() {
           tasks={filteredTasks.filter((task) => task.progress === 'progress')}
           select={select}
           changeProgressStatus={changeProgressStatus}
+          changeTask={changeTask}
         />
         <List
           title={'done'}
           tasks={filteredTasks.filter((task) => task.progress === 'done')}
           select={select}
           changeProgressStatus={changeProgressStatus}
+          changeTask={changeTask}
         />
       </div>
     </div>
