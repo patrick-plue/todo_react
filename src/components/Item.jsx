@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Paper } from '@mui/material';
+import { Paper, Typography } from '@mui/material';
 
 function Item({ tasks, select, changeTask, task }) {
   const [currentValue, setCurrentValue] = useState();
@@ -11,13 +11,20 @@ function Item({ tasks, select, changeTask, task }) {
   };
 
   return (
-    <Paper variant="outlined" sx={style(task)} onClick={() => select(tasks.id)}>
+    <Paper
+      pg={2}
+      variant="outlined"
+      sx={style(task)}
+      onClick={() => select(tasks.id)}
+    >
       {tasks.edit === true ? (
         <form onSubmit={(event) => changeTask(event, currentValue)}>
           <input onChange={(e) => setCurrentValue(e.target.value)}></input>
         </form>
       ) : (
-        <p className="mainTask">{tasks.text}</p>
+        <Typography mt={2} mb={2} ml={1} align="left">
+          {tasks.text}
+        </Typography>
       )}
     </Paper>
   );

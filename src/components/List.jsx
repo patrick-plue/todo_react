@@ -1,13 +1,21 @@
 import React from 'react';
 import Item from './Item';
 import { v4 as uuidv4 } from 'uuid';
+import { Typography, Tooltip, Card } from '@mui/material';
 
 function List({ title, tasks, select, changeProgressStatus, changeTask }) {
   return (
-    <div className="listContainer">
-      <h3 className="listTitle" onClick={() => changeProgressStatus(title)}>
-        {title}
-      </h3>
+    <div>
+      <Typography
+        variant="h5"
+        component="h5"
+        mb={2}
+        mt={2}
+        onClick={() => changeProgressStatus(title)}
+      >
+        {title}{' '}
+      </Typography>
+
       {tasks.map((task) => (
         <Item
           tasks={task}

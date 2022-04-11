@@ -27,7 +27,7 @@ function Sidebar({
         <Box>
           <TextField
             id="outlined-basic"
-            label="Add a task"
+            label="task"
             variant="outlined"
             onChange={(event) => setNewTask(event.target.value)}
           />
