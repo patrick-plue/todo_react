@@ -1,7 +1,7 @@
 import React from 'react';
 import Item from './Item';
 import { v4 as uuidv4 } from 'uuid';
-import { Typography, Tooltip, Card } from '@mui/material';
+import { Typography } from '@mui/material';
 
 function List({ title, tasks, select, changeProgressStatus, changeTask }) {
   return (
