@@ -23,7 +23,7 @@ function Header({
   };
   return (
     <>
-      <Grid container spacing={4} direction="row">
+      <Grid container spacing={10} direction="row" gap={1}>
         <Grid item>
           <ToggleButtonGroup>
             {filterOptions.map((option) => (

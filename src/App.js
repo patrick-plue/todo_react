@@ -124,7 +124,7 @@ function App() {
   return (
     <>
       <Grid container spacing={2} justifyContent="center">
-        <Grid item>
+        <Grid item sx={{ padding: 3, margin: 3 }}>
           <Header
             deleteTask={deleteTask}
             editTask={editTask}

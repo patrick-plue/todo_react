@@ -21,9 +21,10 @@ function Item({ tasks, select, changeTask, task }) {
           {/* <input onChange={(e) => setCurrentValue(e.target.value)}></input> */}
           <TextField
             id="outlined-basic"
-            label="Outlined"
+            label="Change Task"
             variant="outlined"
             onChange={(e) => setCurrentValue(e.target.value)}
+            sx={{ width: 'inherit' }}
           />
         </form>
       ) : (
