@@ -1,25 +1,30 @@
 import React, { useState } from 'react';
-import { Paper, Typography } from '@mui/material';
+import { Paper, Typography, TextField } from '@mui/material';
 
 function Item({ tasks, select, changeTask, task }) {
   const [currentValue, setCurrentValue] = useState();
 
   const style = (task) => {
     return task.selected === true
-      ? { cursor: 'pointer', backgroundColor: 'red' }
-      : { cursor: 'pointer' };
+      ? {
+          cursor: 'pointer',
+          border: '2px dashed red',
+          marginTop: 1,
+        }
+      : { cursor: 'pointer', marginTop: 1 };
   };
 
   return (
-    <Paper
-      pg={2}
-      variant="outlined"
-      sx={style(task)}
-      onClick={() => select(tasks.id)}
-    >
+    <Paper variant="outlined" sx={style(task)} onClick={() => select(tasks.id)}>
       {tasks.edit === true ? (
         <form onSubmit={(event) => changeTask(event, currentValue)}>
-          <input onChange={(e) => setCurrentValue(e.target.value)}></input>
+          {/* <input onChange={(e) => setCurrentValue(e.target.value)}></input> */}
+          <TextField
+            id="outlined-basic"
+            label="Outlined"
+            variant="outlined"
+            onChange={(e) => setCurrentValue(e.target.value)}
+          />
         </form>
       ) : (
         <Typography mt={2} mb={2} ml={1} align="left">

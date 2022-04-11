@@ -12,6 +12,8 @@ function List({ title, tasks, select, changeProgressStatus, changeTask }) {
         mb={2}
         mt={2}
         onClick={() => changeProgressStatus(title)}
+        sx={{ textTransform: 'uppercase', cursor: 'pointer' }}
+        align="center"
       >
         {title}{' '}
       </Typography>
