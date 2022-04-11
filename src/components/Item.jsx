@@ -1,13 +1,17 @@
 import React, { useState } from 'react';
+import { Paper } from '@mui/material';
 
-function Item({ tasks, select, changeTask }) {
+function Item({ tasks, select, changeTask, task }) {
   const [currentValue, setCurrentValue] = useState();
-  console.log(currentValue);
+
+  const style = (task) => {
+    return task.selected === true
+      ? { cursor: 'pointer', backgroundColor: 'red' }
+      : { cursor: 'pointer' };
+  };
+
   return (
-    <div
-      className={tasks.selected ? 'selected itemCard' : 'itemCard'}
-      onClick={() => select(tasks.id)}
-    >
+    <Paper variant="outlined" sx={style(task)} onClick={() => select(tasks.id)}>
       {tasks.edit === true ? (
         <form onSubmit={(event) => changeTask(event, currentValue)}>
           <input onChange={(e) => setCurrentValue(e.target.value)}></input>
@@ -15,7 +19,7 @@ function Item({ tasks, select, changeTask }) {
       ) : (
         <p className="mainTask">{tasks.text}</p>
       )}
-    </div>
+    </Paper>
   );
 }
 

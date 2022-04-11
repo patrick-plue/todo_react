@@ -6,12 +6,6 @@ import Header from './components/Header';
 import Sidebar from './components/Sidebar';
 import List from './components/List';
 
-// import './assets/app.css';
-// import './assets/header.css';
-// import './assets/list.css';
-// import './assets/sidebar.css';
-// import './assets/item.css';
-
 function App() {
   // useStates
   const [tasks, setTasks] = useState([]);
@@ -129,55 +123,64 @@ function App() {
 
   return (
     <>
-      <Grid
-        container
-        direction="row"
-        justifyContent="space-around"
-        alignItems="flex-start"
-      >
-        <Header
-          deleteTask={deleteTask}
-          editTask={editTask}
-          changeFilterOption={changeFilterOption}
-          filterOptions={filterOptions}
-          filterOption={filterOption}
-        />
-      </Grid>
-      <Grid container spacing={2} direction="row" xs={12}>
-        <Sidebar
-          addTask={addTask}
-          setProgressStatus={setProgressStatus}
-          progressStatus={progressStatus}
-          filterOption={filterOption}
-          clearHistory={clearHistory}
-        />
-
-        <Grid item xs={3} direction="row">
-          <List
-            title={'todo'}
-            tasks={filteredTasks.filter((task) => task.progress === 'todo')}
-            select={select}
-            changeProgressStatus={changeProgressStatus}
-            changeTask={changeTask}
+      <Grid container spacing={2} justifyContent="center">
+        <Grid item>
+          <Header
+            deleteTask={deleteTask}
+            editTask={editTask}
+            changeFilterOption={changeFilterOption}
+            filterOptions={filterOptions}
+            filterOption={filterOption}
+            clearHistory={clearHistory}
           />
         </Grid>
-        <Grid item xs={3}>
-          <List
-            title={'progress'}
-            tasks={filteredTasks.filter((task) => task.progress === 'progress')}
-            select={select}
-            changeProgressStatus={changeProgressStatus}
-            changeTask={changeTask}
-          />
-        </Grid>
-        <Grid item xs={3}>
-          <List
-            title={'done'}
-            tasks={filteredTasks.filter((task) => task.progress === 'done')}
-            select={select}
-            changeProgressStatus={changeProgressStatus}
-            changeTask={changeTask}
-          />
+        <Grid item xs={11}>
+          <Grid
+            container
+            direction="row"
+            justifyContent={'space-between'}
+            spacing={2}
+          >
+            <Grid item xs={11} sm={3}>
+              <Grid container>
+                <Sidebar
+                  addTask={addTask}
+                  setProgressStatus={setProgressStatus}
+                  progressStatus={progressStatus}
+                  filterOption={filterOption}
+                />
+              </Grid>
+            </Grid>
+            <Grid item xs={4} sm={3}>
+              <List
+                title={'todo'}
+                tasks={filteredTasks.filter((task) => task.progress === 'todo')}
+                select={select}
+                changeProgressStatus={changeProgressStatus}
+                changeTask={changeTask}
+              />
+            </Grid>
+            <Grid item xs={4} sm={3}>
+              <List
+                title={'progress'}
+                tasks={filteredTasks.filter(
+                  (task) => task.progress === 'progress'
+                )}
+                select={select}
+                changeProgressStatus={changeProgressStatus}
+                changeTask={changeTask}
+              />
+            </Grid>
+            <Grid item xs={4} sm={3}>
+              <List
+                title={'done'}
+                tasks={filteredTasks.filter((task) => task.progress === 'done')}
+                select={select}
+                changeProgressStatus={changeProgressStatus}
+                changeTask={changeTask}
+              />
+            </Grid>
+          </Grid>
         </Grid>
       </Grid>
     </>

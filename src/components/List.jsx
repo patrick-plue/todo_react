@@ -14,6 +14,7 @@ function List({ title, tasks, select, changeProgressStatus, changeTask }) {
           key={uuidv4()}
           select={select}
           changeTask={changeTask}
+          task={task}
         />
       ))}
     </div>

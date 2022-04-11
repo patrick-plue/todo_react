@@ -16,14 +16,14 @@ function Sidebar({
   setProgressStatus,
   progressStatus,
   filterOption,
-  clearHistory,
+
   // changeCategory,
 }) {
   const [newTask, setNewTask] = useState();
 
   return (
     <>
-      <Grid item>
+      <Grid item xs={10}>
         <Box>
           <TextField
             id="outlined-basic"
@@ -48,11 +48,7 @@ function Sidebar({
                 control={<Radio />}
                 label="progress"
               />
-              <FormControlLabel
-                value="done"
-                control={<Radio />}
-                label="addTask"
-              />
+              <FormControlLabel value="done" control={<Radio />} label="done" />
             </RadioGroup>
           </FormControl>
         </Box>
@@ -63,15 +59,6 @@ function Sidebar({
             onClick={(e) => addTask(e, newTask, progressStatus, filterOption)}
           >
             Add Task
-          </Button>
-        </Box>
-        <Box>
-          <Button
-            variant="outlined"
-            color="error"
-            onClick={() => clearHistory()}
-          >
-            Clear History
           </Button>
         </Box>
       </Grid>
