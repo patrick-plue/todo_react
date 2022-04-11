@@ -15,7 +15,7 @@ import List from './components/List';
 function App() {
   // useStates
   const [tasks, setTasks] = useState([]);
-  const [progressStatus, setProgressStatus] = useState();
+  const [progressStatus, setProgressStatus] = useState('todo');
   const [filteredTasks, setFilteredTasks] = useState([]);
   const [filterOption, setFilterOption] = useState('general');
   const [filterOptions, setFilterOptions] = useState([

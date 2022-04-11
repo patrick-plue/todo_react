@@ -40,6 +40,7 @@ function Sidebar({
             <RadioGroup
               aria-labelledby="demo-radio-buttons-group-label"
               name="radio-buttons-group"
+              defaultValue="todo"
             >
               <FormControlLabel value="todo" control={<Radio />} label="todo" />
               <FormControlLabel
