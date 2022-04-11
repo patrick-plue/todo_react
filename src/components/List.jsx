@@ -7,8 +7,8 @@ function List({ title, tasks, select, changeProgressStatus, changeTask }) {
   return (
     <div>
       <Typography
-        variant="h5"
-        component="h5"
+        variant="h6"
+        component="h6"
         mb={2}
         mt={2}
         onClick={() => changeProgressStatus(title)}
